@@ -37,6 +37,12 @@ export const watchAdmin = function watchAdmin() {
 };
 watchAdmin.description = 'Watch admin asset sources and rebuild on changes.';
 
+export const buildFomanticUi = function buildFomanticUi() {
+  return gulp.src('semantic/gulpfile.js', { read: false })
+    .pipe(chug({ tasks: 'build' }));
+};
+buildFomanticUi.description = 'Build Fomantic-UI assets.';
+
 export const buildShop = function buildShop() {
   return gulp.src('vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
     .pipe(chug({ args: config, tasks: 'build' }));
@@ -49,7 +55,7 @@ export const watchShop = function watchShop() {
 };
 watchShop.description = 'Watch shop asset sources and rebuild on changes.';
 
-export const build = gulp.parallel(buildAdmin, buildShop);
+export const build = gulp.series(buildFomanticUi, gulp.parallel(buildAdmin, buildShop));
 build.description = 'Build assets.';
 
 export const watch = gulp.parallel(watchAdmin, watchShop);
