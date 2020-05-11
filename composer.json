@@ -16,9 +16,15 @@
             "name": "Community contributions"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:4c0n/Sylius.git"
+        }
+    ],
     "require": {
         "php": "^7.2",
-        "sylius/sylius": "~1.6.0",
+        "sylius/sylius": "dev-feature/building-semantic-ui",
         "symfony/dotenv": "^4.3",
         "symfony/flex": "^1.2"
     },

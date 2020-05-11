@@ -122,7 +122,7 @@ RUN set -eux; \
 	;
 
 # prevent the reinstallation of vendors at every changes in the source code
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock semantic/ semantic.json ./
 RUN set -eux; \
 	yarn install; \
 	yarn cache clean
